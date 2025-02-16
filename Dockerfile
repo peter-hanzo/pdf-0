@@ -8,7 +8,7 @@ LABEL author="koyote92"
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y --no-install-recommends\
+RUN apt-get update && apt-get install -y --no-install-recommends \
     poppler-utils \
     wget \
     && rm -rf /var/lib/apt/lists/*
@@ -21,7 +21,7 @@ RUN mkdir -p /app/pdfs /app/pngs
 
 COPY . /app/
 
-# Это внутренний виртуальный порт Docker Network, он не будет занимать порты из системы
-EXPOSE 10000
+# Соответствует порту в docker-compose.yml
+EXPOSE 3300
 
-CMD ["uvicorn", "fapi:app", "--host", "0.0.0.0", "--port", "10000"]
+CMD ["uvicorn", "fapi:app", "--host", "0.0.0.0", "--port", "3300"]
