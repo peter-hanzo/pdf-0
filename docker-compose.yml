@@ -1,19 +1,15 @@
-version: '3.8'
+version: "3.8"
 
 services:
   pdf_app:
     build: .
     container_name: pdf_app
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.pdf_app.rule=Host(`test-pdf-pbhuhp-20d604-46-165-200-49.traefik.me`)"
-      - "traefik.http.services.pdf_app.loadbalancer.server.port=3300"
-    ports:
-      - "3300:3300"  # Проброс порта с хоста в контейнер
     networks:
-      - web
+      - dokploy-network
+    ports:
+      - "3300:3300"  # Проброс порта 3300
     restart: unless-stopped
 
 networks:
-  web:
-    external: true  # Traefik должен быть в этой сети
+  dokploy-network:
+    driver: bridge  # Используем сеть по умолчанию (или можешь настроить свою)
