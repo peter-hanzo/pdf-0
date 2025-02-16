@@ -6,7 +6,7 @@ services:
     container_name: pdf_app
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.pdf_app.rule=Host(`test-pdf-11caod-585c68-46-165-200-49.traefik.me`)"
+      - "traefik.http.routers.pdf_app.rule=Host(`test-pdf-pbhuhp-20d604-46-165-200-49.traefik.me`)"
       - "traefik.http.services.pdf_app.loadbalancer.server.port=3300"
     ports:
       - "3300:3300"  # Проброс порта с хоста в контейнер
