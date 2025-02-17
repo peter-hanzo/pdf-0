@@ -2,13 +2,15 @@ version: "3.8"
 
 services:
   pdf_app:
-    build: .
+    # build: .
+    image:  ghcr.io/peter-hanzo/pdf-0:main
     container_name: pdf_app
     networks:
       - dokploy-network
     ports:
       - "3300:3300"  # Проброс порта 3300
     restart: unless-stopped
+    
 
 networks:
   dokploy-network:
